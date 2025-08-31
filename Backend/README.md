@@ -1,6 +1,6 @@
 # Backend API Documentation
 
-## POST /users/register Endpoint
+## /users/register Endpoint
 
 ### Description
 Creates a new user account in the system. This endpoint validates user input, hashes the password securely, stores the user data in the database, and returns an authentication token along with the user information.
@@ -72,3 +72,32 @@ The returned JWT token contains:
 - The `lastname` field is optional but must meet minimum length requirements if provided
 - The returned token can be used for authenticated requests to other endpoints
 - Password is never returned in the response for security purposes
+
+
+### /users/profile Endpoint
+
+### Description
+- Retrieves the profile information of the currently authenticated user.
+
+### HTTP Method
+
+- GET
+
+### Authentication
+- Requires a valid JWT token in the Authorization header: Authorization: Bearer <token>
+
+### Example Response
+
+* `user` (object):
+   * `fullname` (object).
+      * `firstname` (string): User's first name (minimum 3 characters).
+      * `lastname` (string): User's last name (minimum 3 characters).
+   * `email` (string): User's email address (must be a valid email).
+
+
+
+### General Notes
+
+- Email addresses must be unique in the system
+- Passwords are never returned in responses for security
+- JWT tokens are valid for 24 hours  
