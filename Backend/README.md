@@ -64,14 +64,43 @@ The returned JWT token contains:
 - **Algorithm**: HS256
 - **Secret**: Environment variable `JWT_SECRET`
 
-
-
 ### Notes
 
 - Email addresses must be unique in the system
 - The `lastname` field is optional but must meet minimum length requirements if provided
 - The returned token can be used for authenticated requests to other endpoints
 - Password is never returned in the response for security purposes
+
+### /users/login Endpoint
+
+### Description
+
+- Authenticates a user using their email and password, returning a JWT token upon successful login.
+
+### HTTP Method
+
+- POST
+
+### Endpoint
+
+- /users/login
+
+### Request Body
+
+- The request body should be in JSON format and include the following fields:
+
+* email (string, required): User's email address (must be a valid email).
+* password (string, required): User's password (minimum 6 characters).
+
+### Example Response
+
+* `user` (object)
+  * `fullname` (object)
+    * `firstname` (string): User's first name (minimum 3 characters)
+    * `lastname` (string): User's last name (minimum 3 characters)
+  * `email` (string): User's email address (must be a valid email)
+  * `password` (string): User's password (minimum 6 characters)
+  * `token` (string): JWT Token
 
 
 ### /users/profile Endpoint
@@ -94,10 +123,52 @@ The returned JWT token contains:
       * `lastname` (string): User's last name (minimum 3 characters).
    * `email` (string): User's email address (must be a valid email).
 
-
-
 ### General Notes
 
 - Email addresses must be unique in the system
 - Passwords are never returned in responses for security
 - JWT tokens are valid for 24 hours  
+
+
+### /users/logout Endpoint
+
+### Description
+
+- Logout the current user and blacklist the token provided in cookie or headers
+
+### HTTP Method
+- GET
+
+### Authentication
+
+- Requires a valid JWT token in the Authorization header or cookie:
+
+### Example Response
+
+* `user` (object)
+  * `fullname` (object)
+    * `firstname` (string): User's first name (minimum 3 characters)
+    * `lastname` (string): User's last name (minimum 3 characters)
+  * `email` (string): User's email address (must be a valid email)
+  * `password` (string): User's password (minimum 6 characters)
+  * `token` (string): JWT Token
+
+
+### /users/logout Endpoint
+
+### Description
+- Logout the current user and blacklist the token provided in cookie or headers
+
+### HTTP Method
+- GET
+
+### Authentication
+- Requires a valid JWT token in the Authorization header or cookie:
+
+* `user` (object)
+  * `fullname` (object)
+    * `firstname` (string): User's first name (minimum 3 characters)
+    * `lastname` (string): User's last name (minimum 3 characters)
+  * `email` (string): User's email address (must be a valid email)
+  * `password` (string): User's password (minimum 6 characters)
+  * `token` (string): JWT Token

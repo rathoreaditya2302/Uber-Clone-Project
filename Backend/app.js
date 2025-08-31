@@ -1,6 +1,7 @@
 const dotenv = require('dotenv');
 dotenv.config();
 const express = require('express');
+const cookieParser = require('cookie-parser');
 const app = express();
 const connectToDb = require('./db/db');
 const userRoutes = require('./routes/userroutes');
@@ -11,9 +12,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 
+
 app.get('/', (req,res) => {
     res.send('Hello World');
 });
+app.use(cookieParser());
 
 app.use('/users' , userRoutes);
 
