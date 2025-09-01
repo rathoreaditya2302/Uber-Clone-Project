@@ -71,7 +71,7 @@ The returned JWT token contains:
 - The returned token can be used for authenticated requests to other endpoints
 - Password is never returned in the response for security purposes
 
-### /users/login Endpoint
+### /users/login Endpoint  
 
 ### Description
 
@@ -154,21 +154,3 @@ The returned JWT token contains:
   * `token` (string): JWT Token
 
 
-### /users/logout Endpoint
-
-### Description
-- Logout the current user and blacklist the token provided in cookie or headers
-
-### HTTP Method
-- GET
-
-### Authentication
-- Requires a valid JWT token in the Authorization header or cookie:
-
-* `user` (object)
-  * `fullname` (object)
-    * `firstname` (string): User's first name (minimum 3 characters)
-    * `lastname` (string): User's last name (minimum 3 characters)
-  * `email` (string): User's email address (must be a valid email)
-  * `password` (string): User's password (minimum 6 characters)
-  * `token` (string): JWT Token
