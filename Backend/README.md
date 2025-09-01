@@ -152,5 +152,5 @@ The returned JWT token contains:
   * `email` (string): User's email address (must be a valid email)
   * `password` (string): User's password (minimum 6 characters)
   * `token` (string): JWT Token
-
+  
 
